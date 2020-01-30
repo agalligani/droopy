@@ -1,0 +1,4 @@
+name: React Page
+description: A module for Drupal 8 Containing React
+type: module
+core: 8.x

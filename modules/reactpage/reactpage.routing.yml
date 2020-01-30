@@ -1,0 +1,7 @@
+reactpage.article_list:
+  path: "/reactpage/articles"
+  defaults:
+    _controller: '\Drupal\reactpage\Controller\ArticleController::page'
+    _title: "Our Articles"
+  requirements:
+    _permission: "access content"
