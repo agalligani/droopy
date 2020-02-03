@@ -1,0 +1,9 @@
+react-styling:
+  css:
+    theme:
+      css/custom.css: {} 
+
+  js:
+    react_code/dist/index_bundle.js: {}
+
+
