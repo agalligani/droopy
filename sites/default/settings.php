@@ -757,8 +757,8 @@ $settings['entity_update_backup'] = TRUE;
 # }
 $databases['default']['default'] = array (
   'database' => 'tacitusp_octodrupal',
-  'username' => 'root',
-  'password' => 'root',
+  'username' => 'tacitusp_shawny',
+  'password' => 'CowFlop#123',
   'prefix' => '',
   'host' => 'localhost',
   'port' => '3306',
