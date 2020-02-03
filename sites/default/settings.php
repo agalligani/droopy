@@ -752,9 +752,7 @@ $settings['entity_update_backup'] = TRUE;
  * Keep this code block at the end of this file to take full effect.
  */
 #
-# if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
-#   include $app_root . '/' . $site_path . '/settings.local.php';
-# }
+
 $databases['default']['default'] = array (
   'database' => 'tacitusp_octodrupal',
   'username' => 'tacitusp_shawny',
@@ -766,3 +764,7 @@ $databases['default']['default'] = array (
   'driver' => 'mysql',
 );
 $settings['config_sync_directory'] = 'sites/default/files/config_B_DDa9uLi6kRuSD_Z1l0SgQ2xBSOCdZmqzqKuHn5Q9isi4suvrDIIY3gmz_S87_Cx15Umvt4jw/sync';
+
+if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+  include $app_root . '/' . $site_path . '/settings.local.php';
+}
