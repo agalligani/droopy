@@ -31,3 +31,5 @@ sites/simpletest
 
 # Ignore SimpleTest multi-site environment.
 # simpletest
+
+themes/custom/newrealty/node_modules
