@@ -11,8 +11,16 @@
  */
 
 // Set the directory for the theme root used to locate images, fonts etc.
-$theme-root: '..';
+$theme-root: "..";
 
 // Set other directories relative to theme root.
-$image-path: '#{$theme-root}/images';
-$icon-font-path: '#{$theme-root}/bootstrap/assets/fonts/bootstrap/';
+$image-path: "#{$theme-root}/images";
+$icon-font-path: "#{$theme-root}/bootstrap/assets/fonts/bootstrap/";
+
+//== Global Design
+@import "./real-deal-scss/global/mixins";
+@import "./real-deal-scss/global/variables";
+@import "./real-deal-scss/global/global";
+@import "./real-deal-scss/global/theme";
+@import "./real-deal-scss/global/common";
+@import "./real-deal-scss/real-deal-style.scss";

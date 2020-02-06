@@ -1,0 +1,270 @@
+{% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %} 
+{# Navbar #} 
+{% if page.navigation or page.navigation_collapsible %} 
+{% block navbar %} {% set navbar_classes = [ 'navbar', 
+theme.settings.navbar_inverse ? 'navbar-inverse' : 'navbar-default',
+theme.settings.navbar_position ? 'navbar-' ~
+theme.settings.navbar_position|clean_class : container, ] %}
+<div class="navbar-area">
+  <nav class="navbar navbar-area navbar-expand-lg">
+    <div class="container nav-container">
+      <div class="responsive-mobile-menu">
+        <button
+          class="menu toggle-btn d-block d-lg-none"
+          data-toggle="collapse"
+          data-target="#realdeal_main_menu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="icon-left"></span>
+          <span class="icon-right"></span>
+        </button>
+      </div>
+      <!-- <div class="logo">
+        <a href="index.html"><img src="assets/img/logo.png" alt="logo"/></a>
+      </div> -->
+      <div class="nav-right-part nav-right-part-mobile">
+        <a class="btn btn-yellow" href="add-new-property.html"
+          >ADD LISTING <span class="right"><i class="la la-plus"></i></span
+        ></a>
+      </div>
+      <div class="collapse navbar-collapse" id="realdeal_main_menu">
+        <ul class="navbar-nav menu-open">
+          <li class="menu-item-has-children current-menu-item">
+            <a href="#">Home</a>
+            <ul class="sub-menu">
+              <li><a href="index.html">Home 01</a></li>
+              <li><a href="home02.html">Home 02</a></li>
+              <li><a href="home03.html">Home 03</a></li>
+              <li><a href="home04.html">Home 04</a></li>
+              <li><a href="home05.html">Home 05</a></li>
+            </ul>
+          </li>
+          <li class="menu-item-has-children">
+            <a href="#">Property</a>
+            <ul class="sub-menu">
+              <li><a href="property.html">Property</a></li>
+              <li>
+                <a href="propertys-availavbe.html">Propertys Availavbe</a>
+              </li>
+              <li><a href="propertys-by-city.html">Property By City</a></li>
+              <li><a href="propertys-recent.html">Property Recent</a></li>
+              <li><a href="property-details.html">Property Details</a></li>
+            </ul>
+          </li>
+          <li class="menu-item-has-children">
+            <a href="#">Pages</a>
+            <ul class="sub-menu">
+              <li><a href="about.html">About</a></li>
+              <li><a href="advisor.html">Advisor</a></li>
+              <li><a href="search-map.html">Search Map</a></li>
+              <li><a href="search-list.html">Search List</a></li>
+              <li><a href="search-grid.html">Search Grid</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="pricing.html">Pricing</a></li>
+              <li><a href="user-list.html">User List</a></li>
+              <li><a href="registration.html">Registration</a></li>
+              <li><a href="404.html">404</a></li>
+            </ul>
+          </li>
+          <li class="menu-item-has-children">
+            <a href="#">News</a>
+            <ul class="sub-menu">
+              <li><a href="news.html">News</a></li>
+              <li><a href="news-details.html">News Details</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="nav-right-part nav-right-part-desktop">
+        <a class="btn btn-yellow" href="add-new-property.html"
+          >ADD LISTING <span class="right"><i class="la la-plus"></i></span
+        ></a>
+      </div>
+    </div>
+  </nav>
+</div>
+{% endblock %} {% endif %}
+
+{# Main #}
+{% block main %}
+
+<div class="banner-area jarallax" style="background-image: none; position: relative; z-index: 0;" data-jarallax-original-styles="background-image: url(assets/img/banner/1.jpg);">
+    <div class="container">
+        <div class="banner-inner-wrap">
+            <div class="row">
+                <div class="col-12">
+                    <div class="banner-inner">
+                        <h5 class="sub-title">The Best Way To</h5>
+                        <h1 class="title">Find Your <br> Perfect Home</h1>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="banner-search-wrap">
+                        <ul class="nav nav-tabs rld-banner-tab">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs_1">For Buy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs_2">For Rent</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="tabs_1">
+                                <div class="rld-main-search">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-6 col-md-6">
+                                            <div class="rld-single-input left-icon">
+                                                <input type="text" placeholder="Entry Landmark Location">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-2 col-lg-6 col-md-6">
+                                            <div class="rld-single-select">
+                                                <select class="select single-select" style="display: none;">
+                                                  <option value="1">All Properties</option>
+                                                  <option value="2">Properties 1</option>
+                                                  <option value="3">Properties 2</option>
+                                                  <option value="3">Properties 3</option>
+                                                </select><div class="nice-select select single-select" tabindex="0"><span class="current">All Properties</span><ul class="list"><li data-value="1" class="option selected">All Properties</li><li data-value="2" class="option">Properties 1</li><li data-value="3" class="option">Properties 2</li><li data-value="3" class="option">Properties 3</li></ul></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-2 col-lg-4 col-md-4">
+                                            <div class="rld-single-select">
+                                                <select class="select single-select" style="display: none;">
+                                                  <option value="1">Room</option>
+                                                  <option value="2">Room 1</option>
+                                                  <option value="3">Room 2</option>
+                                                  <option value="3">Room 3</option>
+                                                </select><div class="nice-select select single-select" tabindex="0"><span class="current">Room</span><ul class="list"><li data-value="1" class="option selected">Room</li><li data-value="2" class="option">Room 1</li><li data-value="3" class="option">Room 2</li><li data-value="3" class="option">Room 3</li></ul></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-2 col-lg-4 col-md-4">
+                                            <div class="rld-single-select">
+                                                <select class="select single-select" style="display: none;">
+                                                  <option value="1">Any Price</option>
+                                                  <option value="2">Price 1</option>
+                                                  <option value="3">Price 2</option>
+                                                  <option value="3">Price 3</option>
+                                                </select><div class="nice-select select single-select" tabindex="0"><span class="current">Any Price</span><ul class="list"><li data-value="1" class="option selected">Any Price</li><li data-value="2" class="option">Price 1</li><li data-value="3" class="option">Price 2</li><li data-value="3" class="option">Price 3</li></ul></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-2 col-lg-4 col-md-4">
+                                            <a class="btn btn-yellow" href="#">SEARCH NOW</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tabs_2">
+                                <div class="rld-main-search">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-6 col-md-6">
+                                            <div class="rld-single-input left-icon">
+                                                <input type="text" placeholder="Entry Landmark Location">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-2 col-lg-6 col-md-6">
+                                            <div class="rld-single-select">
+                                                <select class="select single-select" style="display: none;">
+                                                  <option value="1">All Properties</option>
+                                                  <option value="2">Properties 1</option>
+                                                  <option value="3">Properties 2</option>
+                                                  <option value="3">Properties 3</option>
+                                                </select><div class="nice-select select single-select" tabindex="0"><span class="current">All Properties</span><ul class="list"><li data-value="1" class="option selected">All Properties</li><li data-value="2" class="option">Properties 1</li><li data-value="3" class="option">Properties 2</li><li data-value="3" class="option">Properties 3</li></ul></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-2 col-lg-4 col-md-4">
+                                            <div class="rld-single-select">
+                                                <select class="select single-select" style="display: none;">
+                                                  <option value="1">Room</option>
+                                                  <option value="2">Room 1</option>
+                                                  <option value="3">Room 2</option>
+                                                  <option value="3">Room 3</option>
+                                                </select><div class="nice-select select single-select" tabindex="0"><span class="current">Room</span><ul class="list"><li data-value="1" class="option selected">Room</li><li data-value="2" class="option">Room 1</li><li data-value="3" class="option">Room 2</li><li data-value="3" class="option">Room 3</li></ul></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-2 col-lg-4 col-md-4">
+                                            <div class="rld-single-select">
+                                                <select class="select single-select" style="display: none;">
+                                                  <option value="1">Any Price</option>
+                                                  <option value="2">Price 1</option>
+                                                  <option value="3">Price 2</option>
+                                                  <option value="3">Price 3</option>
+                                                </select><div class="nice-select select single-select" tabindex="0"><span class="current">Any Price</span><ul class="list"><li data-value="1" class="option selected">Any Price</li><li data-value="2" class="option">Price 1</li><li data-value="3" class="option">Price 2</li><li data-value="3" class="option">Price 3</li></ul></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-2 col-lg-4 col-md-4">
+                                            <a class="btn btn-yellow" href="#">SEARCH NOW</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div id="jarallax-container-0" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none; z-index: -100;"><div style="background-position: 50% 50%; background-size: cover; background-repeat: no-repeat; background-image: url(&quot;file:///Users/tony/cabin-photos/themeforest-yhLccF5D-realdeal-responsive-real-estate-html-template/main-file/assets/img/banner/1.jpg&quot;); position: fixed; top: 0px; left: 0px; width: 1349px; height: 198px; overflow: hidden; pointer-events: none; margin-top: 0px; transform: translate3d(0px, 0px, 0px);"></div></div></div>
+
+
+
+
+
+
+
+  <div role="main" class="main-container {{ container }} js-quickedit-main-content">
+    <div class="row">
+
+      {# Content #}
+      {%
+        set content_classes = [
+          page.sidebar_first and page.sidebar_second ? 'col-sm-6',
+          page.sidebar_first and page.sidebar_second is empty ? 'col-sm-9',
+          page.sidebar_second and page.sidebar_first is empty ? 'col-sm-9',
+          page.sidebar_first is empty and page.sidebar_second is empty ? 'col-sm-12'
+        ]
+      %}
+      <section{{ content_attributes.addClass(content_classes) }}>
+
+        {# Highlighted #}
+        {% if page.highlighted %}
+          {% block highlighted %}
+            <div class="highlighted">{{ page.highlighted }}</div>
+          {% endblock %}
+        {% endif %}
+
+        {# Help #}
+        {% if page.help %}
+          {% block help %}
+            {{ page.help }}
+          {% endblock %}
+        {% endif %}
+
+        {# Content #}
+        {% block content %}
+          <a id="main-content"></a>
+          {{ page.content }}
+        {% endblock %}
+      </section>
+
+      {# Sidebar Second #}
+      {% if page.sidebar_second %}
+        {% block sidebar_second %}
+          <aside class="col-sm-3" role="complementary">
+            {{ page.sidebar_second }}
+          </aside>
+        {% endblock %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+{% if page.footer %}
+  {% block footer %}
+    <footer class="footer {{ container }}" role="contentinfo">
+      {{ page.footer }}
+    </footer>
+  {% endblock %}
+{% endif %}
+

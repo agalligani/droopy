@@ -1,6 +1,7 @@
 framework:
   css:
     theme:
+      css/vendor.css: {}
       css/style.css: {}
   js:
     bootstrap/assets/javascripts/bootstrap/affix.js: {}
