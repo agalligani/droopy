@@ -1,0 +1,126 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a menu block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: HTML attributes for the containing element.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: HTML attributes for the title element.
+ * - content_attributes: HTML attributes for the content element.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * Headings should be used on navigation menus that consistently appear on
+ * multiple pages. When this menu block's label is configured to not be
+ * displayed, it is automatically made invisible using the 'visually-hidden' CSS
+ * class, which still keeps it visible for screen-readers and assistive
+ * technology. Headings allow screen-reader and keyboard only users to navigate
+ * to or skip the links.
+ * See http://juicystudio.com/article/screen-readers-display-none.php and
+ * http://www.w3.org/TR/WCAG-TECHS/H42.html for more information.
+ *
+ * @ingroup templates
+ */
+#}
+<nav role="navigation" aria-labelledby="{{ heading_id }}"{{ attributes.removeClass('clearfix')|without('role', 'aria-labelledby') }}>
+  {# Label. If not displayed, we still provide it for screen readers. #}
+  {% if not configuration.label_display %}
+    {% set title_attributes = title_attributes.addClass('sr-only') %}
+  {% endif %}
+  <h2{{ title_attributes.setAttribute('id', heading_id) }}>{{ configuration.label }}</h2>
+
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</nav>
+<div class="navbar-area">
+  <nav class="navbar navbar-area navbar-expand-lg">
+    <div class="container nav-container">
+      <div class="responsive-mobile-menu">
+        <button
+          class="menu toggle-btn d-block d-lg-none"
+          data-toggle="collapse"
+          data-target="#realdeal_main_menu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="icon-left"></span>
+          <span class="icon-right"></span>
+        </button>
+      </div>
+      <!-- <div class="logo">
+        <a href="index.html"><img src="assets/img/logo.png" alt="logo"/></a>
+      </div> -->
+      <div class="nav-right-part nav-right-part-mobile">
+        <a class="btn btn-yellow" href="add-new-property.html"
+          >ADD LISTING <span class="right"><i class="la la-plus"></i></span
+        ></a>
+      </div>
+      <div class="collapse navbar-collapse" id="realdeal_main_menu">
+        <ul class="navbar-nav menu-open">
+          <li class="menu-item-has-children current-menu-item">
+            <a href="#">Home</a>
+            <ul class="sub-menu">
+              <li><a href="index.html">Home 01</a></li>
+              <li><a href="home02.html">Home 02</a></li>
+              <li><a href="home03.html">Home 03</a></li>
+              <li><a href="home04.html">Home 04</a></li>
+              <li><a href="home05.html">Home 05</a></li>
+            </ul>
+          </li>
+          <li class="menu-item-has-children">
+            <a href="#">Property</a>
+            <ul class="sub-menu">
+              <li><a href="property.html">Property</a></li>
+              <li>
+                <a href="propertys-availavbe.html">Propertys Availavbe</a>
+              </li>
+              <li><a href="propertys-by-city.html">Property By City</a></li>
+              <li><a href="propertys-recent.html">Property Recent</a></li>
+              <li><a href="property-details.html">Property Details</a></li>
+            </ul>
+          </li>
+          <li class="menu-item-has-children">
+            <a href="#">Pages</a>
+            <ul class="sub-menu">
+              <li><a href="about.html">About</a></li>
+              <li><a href="advisor.html">Advisor</a></li>
+              <li><a href="search-map.html">Search Map</a></li>
+              <li><a href="search-list.html">Search List</a></li>
+              <li><a href="search-grid.html">Search Grid</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="pricing.html">Pricing</a></li>
+              <li><a href="user-list.html">User List</a></li>
+              <li><a href="registration.html">Registration</a></li>
+              <li><a href="404.html">404</a></li>
+            </ul>
+          </li>
+          <li class="menu-item-has-children">
+            <a href="#">News</a>
+            <ul class="sub-menu">
+              <li><a href="news.html">News</a></li>
+              <li><a href="news-details.html">News Details</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="nav-right-part nav-right-part-desktop">
+        <a class="btn btn-yellow" href="add-new-property.html"
+          >ADD LISTING <span class="right"><i class="la la-plus"></i></span
+        ></a>
+      </div>
+    </div>
+  </nav>
+</div>

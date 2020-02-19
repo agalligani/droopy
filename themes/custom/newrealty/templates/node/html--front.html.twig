@@ -1,0 +1,192 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display the basic html structure of a single
+ * Drupal page.
+ *
+ * Variables:
+ * - $css: An array of CSS files for the current page.
+ * - $language: (object) The language the site is being displayed in.
+ *   $language->language contains its textual representation.
+ *   $language->dir contains the language direction. It will either be 'ltr' or
+ *   'rtl'.
+ * - $rdf_namespaces: All the RDF namespace prefixes used in the HTML document.
+ * - $grddl_profile: A GRDDL profile allowing agents to extract the RDF data.
+ * - $head_title: A modified version of the page title, for use in the TITLE
+ *   tag.
+ * - $head_title_array: (array) An associative array containing the string parts
+ *   that were used to generate the $head_title variable, already prepared to be
+ *   output as TITLE tag. The key/value pairs may contain one or more of the
+ *   following, depending on conditions:
+ *   - title: The title of the current page, if any.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site, if any, and if there is no title.
+ * - $head: Markup for the HEAD section (including meta tags, keyword tags, and
+ *   so on).
+ * - $styles: Style tags necessary to import all CSS files for the page.
+ * - $scripts: Script tags necessary to load the JavaScript files and settings
+ *   for the page.
+ * - $page_top: Initial markup from any modules that have altered the
+ *   page. This variable should always be output first, before all other dynamic
+ *   content.
+ * - $page: The rendered page content.
+ * - $page_bottom: Final closing markup from any modules that have altered the
+ *   page. This variable should always be output last, after all other dynamic
+ *   content.
+ * - $classes String of classes that can be used to style contextually through
+ *   CSS.
+ *
+ * @ingroup templates
+ *
+ * @see bootstrap_preprocess_html()
+ * @see template_preprocess()
+ * @see template_preprocess_html()
+ * @see template_process()
+ */
+#}
+{%
+    set body_classes = [
+      logged_in ? 'user-logged-in',
+      not root_path ? 'path-frontpage' : 'path-' ~ root_path|clean_class,
+      node_type ? 'page-node-type-' ~ node_type|clean_class,
+      db_offline ? 'db-offline',
+      theme.settings.navbar_position ? 'navbar-is-' ~ theme.settings.navbar_position,
+      theme.has_glyphicons ? 'has-glyphicons',
+    ]
+  %}
+  <!DOCTYPE html>
+  <html {{ html_attributes }}>
+    <head>
+      <head-placeholder token="{{ placeholder_token|raw }}">
+      <title>{{ head_title|safe_join(' | ') }}</title>
+      <css-placeholder token="{{ placeholder_token|raw }}">
+      <js-placeholder token="{{ placeholder_token|raw }}">
+    </head>
+    <body{{ attributes.addClass(body_classes) }}>
+      <a href="#main-content" class="visually-hidden focusable skip-link">
+        {{ 'Skip to main content'|t }}
+      </a>
+      {{ page_top }}
+      <div class="banner-area jarallax" style="background-image: none; position: relative; z-index: 0;" data-jarallax-original-styles="background-image: url(assets/img/banner/1.jpg);">
+        <div class="container">
+            <div class="banner-inner-wrap">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="banner-inner">
+                            <h5 class="sub-title">The Best Way To</h5>
+                            <h1 class="title">Find Your <br> Perfect Home</h1>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="banner-search-wrap">
+                            <ul class="nav nav-tabs rld-banner-tab">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#tabs_1">For Buy</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs_2">For Rent</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="tabs_1">
+                                    <div class="rld-main-search">
+                                        <div class="row">
+                                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                                <div class="rld-single-input left-icon">
+                                                    <input type="text" placeholder="Entry Landmark Location">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-6 col-md-6">
+                                                <div class="rld-single-select">
+                                                    <select class="select single-select" style="display: none;">
+                                                      <option value="1">All Properties</option>
+                                                      <option value="2">Properties 1</option>
+                                                      <option value="3">Properties 2</option>
+                                                      <option value="3">Properties 3</option>
+                                                    </select><div class="nice-select select single-select" tabindex="0"><span class="current">All Properties</span><ul class="list"><li data-value="1" class="option selected">All Properties</li><li data-value="2" class="option">Properties 1</li><li data-value="3" class="option">Properties 2</li><li data-value="3" class="option">Properties 3</li></ul></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-4 col-md-4">
+                                                <div class="rld-single-select">
+                                                    <select class="select single-select" style="display: none;">
+                                                      <option value="1">Room</option>
+                                                      <option value="2">Room 1</option>
+                                                      <option value="3">Room 2</option>
+                                                      <option value="3">Room 3</option>
+                                                    </select><div class="nice-select select single-select" tabindex="0"><span class="current">Room</span><ul class="list"><li data-value="1" class="option selected">Room</li><li data-value="2" class="option">Room 1</li><li data-value="3" class="option">Room 2</li><li data-value="3" class="option">Room 3</li></ul></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-4 col-md-4">
+                                                <div class="rld-single-select">
+                                                    <select class="select single-select" style="display: none;">
+                                                      <option value="1">Any Price</option>
+                                                      <option value="2">Price 1</option>
+                                                      <option value="3">Price 2</option>
+                                                      <option value="3">Price 3</option>
+                                                    </select><div class="nice-select select single-select" tabindex="0"><span class="current">Any Price</span><ul class="list"><li data-value="1" class="option selected">Any Price</li><li data-value="2" class="option">Price 1</li><li data-value="3" class="option">Price 2</li><li data-value="3" class="option">Price 3</li></ul></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-4 col-md-4">
+                                                <a class="btn btn-yellow" href="#">SEARCH NOW</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tabs_2">
+                                    <div class="rld-main-search">
+                                        <div class="row">
+                                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                                <div class="rld-single-input left-icon">
+                                                    <input type="text" placeholder="Entry Landmark Location">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-6 col-md-6">
+                                                <div class="rld-single-select">
+                                                    <select class="select single-select" style="display: none;">
+                                                      <option value="1">All Properties</option>
+                                                      <option value="2">Properties 1</option>
+                                                      <option value="3">Properties 2</option>
+                                                      <option value="3">Properties 3</option>
+                                                    </select><div class="nice-select select single-select" tabindex="0"><span class="current">All Properties</span><ul class="list"><li data-value="1" class="option selected">All Properties</li><li data-value="2" class="option">Properties 1</li><li data-value="3" class="option">Properties 2</li><li data-value="3" class="option">Properties 3</li></ul></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-4 col-md-4">
+                                                <div class="rld-single-select">
+                                                    <select class="select single-select" style="display: none;">
+                                                      <option value="1">Room</option>
+                                                      <option value="2">Room 1</option>
+                                                      <option value="3">Room 2</option>
+                                                      <option value="3">Room 3</option>
+                                                    </select><div class="nice-select select single-select" tabindex="0"><span class="current">Room</span><ul class="list"><li data-value="1" class="option selected">Room</li><li data-value="2" class="option">Room 1</li><li data-value="3" class="option">Room 2</li><li data-value="3" class="option">Room 3</li></ul></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-4 col-md-4">
+                                                <div class="rld-single-select">
+                                                    <select class="select single-select" style="display: none;">
+                                                      <option value="1">Any Price</option>
+                                                      <option value="2">Price 1</option>
+                                                      <option value="3">Price 2</option>
+                                                      <option value="3">Price 3</option>
+                                                    </select><div class="nice-select select single-select" tabindex="0"><span class="current">Any Price</span><ul class="list"><li data-value="1" class="option selected">Any Price</li><li data-value="2" class="option">Price 1</li><li data-value="3" class="option">Price 2</li><li data-value="3" class="option">Price 3</li></ul></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-4 col-md-4">
+                                                <a class="btn btn-yellow" href="#">SEARCH NOW</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="jarallax-container-0" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; pointer-events: none; z-index: -100;"><div style="background-position: 50% 50%; background-size: cover; background-repeat: no-repeat; background-image: url(&quot;file:///Users/tony/cabin-photos/themeforest-yhLccF5D-realdeal-responsive-real-estate-html-template/main-file/assets/img/banner/1.jpg&quot;); position: fixed; top: 0px; left: 0px; width: 1349px; height: 198px; overflow: hidden; pointer-events: none; margin-top: 0px; transform: translate3d(0px, 0px, 0px);"></div></div></div>
+    
+      {{ page }}
+      {{ page_bottom }}
+      <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+    </body>
+  </html>
+  

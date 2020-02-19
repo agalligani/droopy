@@ -6,3 +6,21 @@
  *
  * Place your custom PHP code in this file.
  */
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function newrealty_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  // Add content type suggestions.
+  if (($node = \Drupal::request()->attributes->get('node')) && 
+  (strpos($_SERVER['REQUEST_URI'], "revisions") == false)) {
+    array_splice($suggestions, 1, 0, 'page__node__' . $node->getType());
+  }
+}
+
+/** suggestions list:
+*   page--node
+*   page--node--page (my method)
+*   page--node--%
+*   page--node--24
+**/
